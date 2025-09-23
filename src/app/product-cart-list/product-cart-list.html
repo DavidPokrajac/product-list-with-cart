@@ -1,0 +1,12 @@
+<ul>
+  @for(recipe of recipes; track recipe.name) {
+  <li>
+    <article>
+      <img [src]="recipe.image.thumbnail" />
+      <span>{{ recipe.category }}</span>
+      <h2>{{ recipe.name }}</h2>
+      <p>{{ recipe.price }}</p>
+    </article>
+  </li>
+  }
+</ul>
