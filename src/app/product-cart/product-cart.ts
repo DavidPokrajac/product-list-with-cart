@@ -1,11 +1,34 @@
-import { Component } from '@angular/core';
+import { Component, Input, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-product-cart',
   imports: [],
   templateUrl: './product-cart.html',
-  styleUrl: './product-cart.scss'
+  styleUrl: './product-cart.scss',
 })
 export class ProductCart {
+  @Input()
+  category = '';
 
+  @Input()
+  name = '';
+
+  @Input()
+  price = 0;
+
+  @Input()
+  imgUrl = {
+    desktop: '',
+    mobile: '',
+    tablet: '',
+  };
+
+  constructor() {
+    console.warn(this.category);
+  }
+
+  @HostListener('window:resize', [])
+  onResize() {
+    console.log('dgfdgd');
+  }
 }

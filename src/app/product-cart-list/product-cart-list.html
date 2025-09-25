@@ -1,12 +1,10 @@
-<ul>
+<ul class="recipes-list">
   @for(recipe of recipes; track recipe.name) {
-  <li>
-    <article>
-      <img [src]="recipe.image.thumbnail" />
-      <span>{{ recipe.category }}</span>
-      <h2>{{ recipe.name }}</h2>
-      <p>{{ recipe.price }}</p>
-    </article>
-  </li>
+  <app-product-cart
+    [category]="recipe.category"
+    [name]="recipe.name"
+    [price]="recipe.price"
+    [imgUrl]="recipe.image"
+  ></app-product-cart>
   }
 </ul>
