@@ -1,4 +1,4 @@
-import { Component, Input, HostListener } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-product-cart',
@@ -25,10 +25,5 @@ export class ProductCart {
 
   constructor() {
     console.warn(this.category);
-  }
-
-  @HostListener('window:resize', [])
-  onResize() {
-    console.log('dgfdgd');
   }
 }

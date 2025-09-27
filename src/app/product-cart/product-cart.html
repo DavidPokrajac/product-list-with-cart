@@ -1,9 +1,14 @@
 <li>
   <article>
     <picture>
-      <source [attr.srcset]="imgUrl.desktop" media="(width >= 1024px)" />
-      <source [attr.srcset]="imgUrl.tablet" media="(width >= 768px)" />
-      <img [src]="imgUrl.mobile" class="recipe-image" />
+      <source
+        media="(min-width: 600px) and (max-width: 1023px)"
+        [srcset]="imgUrl.tablet"
+        alt="Something"
+        width="500"
+      />
+      <source media="(min-width: 1024px)" [srcset]="imgUrl.desktop" alt="Something" width="500" />
+      <img [src]="imgUrl.mobile" class="recipe-image" alt="" />
     </picture>
     <button class="add-to-cart-button">
       <img src="assets/images/icon-add-to-cart.svg" alt="" class="add-to-cart-icon" />Add To Cart
