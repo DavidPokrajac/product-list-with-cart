@@ -27,7 +27,7 @@
                 "output": "/assets/"
               }
             ],
-            "styles": ["src/styles.scss"],
+            "styles": ["src/app/assets/styles/styles.scss"],
             "server": "src/main.server.ts",
             "outputMode": "server",
             "ssr": {

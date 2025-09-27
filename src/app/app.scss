@@ -1,26 +1,30 @@
+@use './assets/styles/abstracts/' as *;
+@use './assets/styles/base/' as *;
+
 .main {
-  padding: 24px;
+  padding: $spacing-300;
   display: grid;
   grid-template-columns: 1fr;
-  min-height: 100vh;
-  row-gap: 32px;
+  min-block-size: 100vh;
+  row-gap: $spacing-400;
   margin: 0 auto;
 
-  @media (min-width: 600px) {
+  @media (width >= 600px) {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: min-content 1fr;
-    padding: 40px;
+    padding: $spacing-500;
   }
 
-  @media (min-width: 1024px) {
+  @media (width >= 1024px) {
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 48px 1fr;
-    column-gap: 32px;
-    max-width: 1216px;
+    column-gap: $spacing-400;
+    max-inline-size: 1216px;
   }
 }
 
 .main-title {
+  font-family: 'Red Hat Bold';
   margin-block: 0;
   grid-row: 1 / 2;
 }
