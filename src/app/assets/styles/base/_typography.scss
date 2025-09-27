@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'Red Hat Regular';
+  src: url('../../fonts/static/RedHatText-Regular.ttf') format(truetype);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Red Hat Semibold';
+  src: url('../../fonts/static/RedHatText-SemiBold.ttf') format(truetype);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Red Hat Bold';
+  src: url('../../fonts/static/RedHatText-Bold.ttf') format(truetype);
+  font-weight: normal;
+  font-style: normal;
+}
+
+.text-extra-large {
+  font-size: 40px;
+  line-height: 1.2;
+  font-weight: 900;
+}
+
+.text-large {
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 900;
+}
+
+.text-medium {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.text-short-regular {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.text-short-semibold {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 500;
+}
