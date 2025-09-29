@@ -1,11 +1,11 @@
 <div class="cart-wrapper">
-  <h2 class="cart-title text-large">Your Cart ({{ cartItem.length }})</h2>
-  @if(cartItem.length === 0) {
+  <h2 class="cart-title text-large">Your Cart ({{ cartItem().length }})</h2>
+  @if(cartItem().length === 0) {
   <img src="assets/images/illustration-empty-cart.svg" class="empty-cart-img" />
   <p class="cart-info text-short-semibold">Your added items will appear here</p>
   } @else {
   <div>
-    @for(item of cartItem; track item.name) {
+    @for(item of cartItem(); track item.name) {
     <div class="order-item">
       <div>
         <h3 class="order-item-name text-short-semibold">{{ item.name }}</h3>
@@ -15,14 +15,17 @@
           item.quantity * item.price | currency
         }}</strong>
       </div>
-      <button class="remove-from-cart-button">
+      <button class="remove-from-cart-button" (click)="removeFromCart(item.name)">
         <img src="assets/images/icon-remove-item.svg" />
       </button>
     </div>
     <hr class="horizontal-divider" />
     }
   </div>
-  <p class="order-total text-short-regular">Order Total</p>
+  <p class="order-total text-short-regular">
+    Order Total
+    <span class="order-overall-price text-large">{{ orderOverallPrice() | currency }}</span>
+  </p>
   <p class="carbon-neutral text-short-regular">
     <img src="assets/images/icon-carbon-neutral.svg" alt="" />This is a
     <strong>carbon-neutral</strong>delivery

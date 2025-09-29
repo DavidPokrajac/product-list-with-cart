@@ -36,6 +36,13 @@
   margin: 0 auto;
   transform: translateY(-50%);
   inline-size: 160px;
+
+  &:hover,
+  &:focus-visible {
+    cursor: pointer;
+    color: $clr-primary-red;
+    border-color: $clr-primary-red;
+  }
 }
 
 .add-to-cart-icon {

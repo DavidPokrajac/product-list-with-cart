@@ -79,6 +79,10 @@
   margin-inline-end: $spacing-100;
 }
 
+.order-item-overall-price {
+  font-weight: 600;
+}
+
 .remove-from-cart-button {
   display: inline-block;
   width: 20px;
@@ -90,6 +94,9 @@
 
 .order-total {
   color: $clr-rose-900;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .carbon-neutral {
@@ -110,4 +117,9 @@
   padding-block: $spacing-200;
   border-radius: 100vw;
   border: transparent;
+}
+
+.order-overall-price {
+  font-family: 'Red Hat Bold';
+  color: $clr-rose-900;
 }

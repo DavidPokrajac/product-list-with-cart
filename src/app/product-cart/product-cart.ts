@@ -1,16 +1,12 @@
-import { NgClass } from '@angular/common';
+import { NgClass, CurrencyPipe } from '@angular/common';
 import { Component, inject, Input, OnInit, signal, computed } from '@angular/core';
 import { AddToCart } from '../add-to-cart';
-
-interface CartModel {
-  name: string;
-  quantity: number;
-  price: number;
-}
+import { RemoveFromCart } from '../remove-from-cart';
+import { CartModel } from '../models/CartModel';
 
 @Component({
   selector: 'app-product-cart',
-  imports: [NgClass],
+  imports: [NgClass, CurrencyPipe],
   templateUrl: './product-cart.html',
   styleUrl: './product-cart.scss',
 })
@@ -32,21 +28,22 @@ export class ProductCart implements OnInit {
   };
 
   cartItems: any = signal([]);
+  removedItem = signal<string | null>(null);
   addToYourCart = inject(AddToCart);
+  itemToRemove = inject(RemoveFromCart);
 
   ngOnInit(): void {
     this.addToYourCart.productsInCartObservable.subscribe((name$) => {
       this.cartItems.set([...this.cartItems(), name$]);
     });
-  }
 
-  cItems = computed(() => {
-    return this.cartItems()
-      .filter((item: CartModel) => {
-        return item.name === this.name;
-      })
-      .map((item: CartModel) => item.quantity);
-  });
+    this.itemToRemove.productToRemoveObservable.subscribe((name$) => {
+      this.removedItem.set(name$);
+      this.cartItems.update((items: CartModel[]) => {
+        return items.filter((item: CartModel) => item.name !== this.removedItem());
+      });
+    });
+  }
 
   addToCart(name: string) {
     if (
@@ -58,7 +55,15 @@ export class ProductCart implements OnInit {
     }
   }
 
-  comp = computed(() => {
+  itemQuantity = computed(() => {
+    return this.cartItems()
+      .filter((item: CartModel) => {
+        return item.name === this.name;
+      })
+      .map((item: CartModel) => item.quantity);
+  });
+
+  itemsInCart = computed(() => {
     return this.cartItems().some((item: CartModel) => {
       return item.name === this.name;
     });
