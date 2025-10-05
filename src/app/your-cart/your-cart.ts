@@ -19,12 +19,21 @@ export class YourCart implements OnInit {
 
   ngOnInit(): void {
     this.addToCart.productsInCartObservable.subscribe((name$) => {
-      this.cartItem.set([...this.cartItem(), name$]);
-      console.log(this.cartItem());
+      this.cartItem.update((items: CartModel[]) => {
+        if (items.find((item: any) => item.name === name$.name)) {
+          return [...this.cartItem()];
+        }
+        return [...this.cartItem(), name$];
+      });
     });
 
     this.removeItemFromCart.productToRemoveObservable.subscribe((name$) => {
       this.cartItemToRemove.set(name$);
+      this.cartItem.update((items: CartModel[]) =>
+        items.filter((item: CartModel) => {
+          return item.name !== this.cartItemToRemove();
+        })
+      );
     });
   }
 
@@ -39,10 +48,8 @@ export class YourCart implements OnInit {
   }
 
   orderOverallPrice = computed(() => {
-    let price = 0;
-    this.cartItem().forEach((item: CartModel) => {
-      price += item.price;
-    });
-    return price;
+    return this.cartItem().reduce((acc: number, item: CartModel) => {
+      return (acc += item.price * item.quantity);
+    }, 0);
   });
 }
