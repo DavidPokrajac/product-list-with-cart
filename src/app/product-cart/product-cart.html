@@ -12,11 +12,11 @@
     </picture>
     @if(itemsInCart()) {
     <div class="quantity-handler">
-      <button class="quantity-btn decrement">
+      <button class="quantity-btn decrement" (click)="handleQuantityDecrement(name)">
         <img src="assets/images/icon-decrement-quantity.svg" alt="" />
       </button>
       <span>{{ itemQuantity()[0] }}</span>
-      <button class="quantity-btn increment">
+      <button class="quantity-btn increment" (click)="handleQuantityIncrement(name)">
         <img src="assets/images/icon-increment-quantity.svg" alt="" />
       </button>
     </div>

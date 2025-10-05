@@ -5,13 +5,11 @@ import { Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class AddToCart {
-  productsInCart = new Subject<
-    {
-      name: string;
-      quantity: 1;
-      price: number;
-    }[]
-  >();
+  productsInCart = new Subject<{
+    name: string;
+    quantity: number;
+    price: number;
+  }>();
 
   productsInCartObservable = this.productsInCart.asObservable();
 

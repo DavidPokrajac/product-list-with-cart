@@ -55,6 +55,44 @@ export class ProductCart implements OnInit {
     }
   }
 
+  handleQuantityDecrement(name: string) {
+    this.cartItems.update((items: any) => {
+      return items
+        .filter((item: any) => item.name === name)
+        .map((i: any, index: number) => {
+          if (i.quantity === 1) {
+            this.removedItem.set(name);
+            this.cartItems().splice(index, 1);
+            this.itemToRemove.removeFromCart$(this.removedItem());
+            return this.cartItems;
+          }
+          i.quantity = i.quantity - 1;
+          this.addToYourCart.addToCart$({
+            name: this.name,
+            quantity: i.quantity,
+            price: this.price,
+          });
+          return i;
+        });
+    });
+  }
+
+  handleQuantityIncrement(name: string) {
+    this.cartItems.update((items: any) => {
+      return items
+        .filter((item: any) => item.name === name)
+        .map((i: any) => {
+          i.quantity = i.quantity + 1;
+          this.addToYourCart.addToCart$({
+            name: this.name,
+            quantity: i.quantity,
+            price: this.price,
+          });
+          return i;
+        });
+    });
+  }
+
   itemQuantity = computed(() => {
     return this.cartItems()
       .filter((item: CartModel) => {
