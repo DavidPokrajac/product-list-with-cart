@@ -9,6 +9,7 @@ export class AddToCart {
     name: string;
     quantity: number;
     price: number;
+    thumbnail: string;
   }>();
 
   productsInCartObservable = this.productsInCart.asObservable();
