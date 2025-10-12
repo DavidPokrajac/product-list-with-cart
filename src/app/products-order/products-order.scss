@@ -1,0 +1,133 @@
+@use '../assets/styles/abstracts' as *;
+@use '../assets/styles/base/' as *;
+
+.order-dialog-wrapper:has(.order-dialog[open]) {
+  position: fixed;
+  inset: 0 0 0 0;
+  background-color: rgb(0, 0, 0, 0.5);
+  min-height: 100vh;
+  height: 100%;
+}
+
+.order-dialog {
+  border: none;
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline: 0;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 12px;
+  padding: $spacing-500 $spacing-300 $spacing-300;
+
+  @media (width >= 600px) {
+    padding: $spacing-500;
+    inset: 50% 50%;
+    translate: -50% -50%;
+  }
+}
+
+.icon-confirmed {
+  margin-block-end: $spacing-300;
+}
+
+.order-dialog-title {
+  color: $clr-rose-900;
+  font-family: 'Red Hat Bold';
+  margin-block-end: $spacing-100;
+}
+
+.order-dialog-info {
+  color: $clr-rose-500;
+  margin-block-end: $spacing-400;
+}
+
+.order-items-wrapper {
+  background-color: $clr-rose-50;
+  border-radius: 8px;
+  padding: $spacing-300;
+  margin-block-end: $spacing-400;
+}
+
+.order-items-wrapper > .order-item:not(:first-child) {
+  margin-block-start: 16px;
+}
+
+.order-items-wrapper > .order-item:not(:last-child) {
+  margin-block-end: 16px;
+}
+
+.order-item:last-of-type + hr {
+  display: none;
+}
+
+.horizontal-divider {
+  color: $clr-rose-100;
+
+  &:last-of-type {
+    margin-block: 24px;
+  }
+}
+
+.order-item {
+  display: flex;
+  column-gap: 16px;
+  align-items: center;
+}
+
+.item-thumbnail {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+}
+
+.order-item-name {
+  font-weight: 600;
+  margin-block-end: $spacing-100;
+  color: $clr-rose-900;
+}
+
+.order-item-quantity {
+  font-weight: 600;
+  color: $clr-primary-red;
+  margin-inline-end: $spacing-100;
+}
+
+.order-item-price {
+  color: $clr-rose-500;
+}
+
+.order-item-price {
+  margin-inline-end: $spacing-100;
+}
+
+.order-item-overall-price {
+  font-family: 'Red Hat Semibold';
+  margin-left: auto;
+  color: $clr-rose-900;
+}
+
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $clr-rose-900;
+}
+
+.order-overall-price {
+  font-family: 'Red Hat Bold';
+}
+
+.start-new-order-btn {
+  display: block;
+  width: 100%;
+  background-color: $clr-primary-red;
+  color: $clr-white;
+  padding-block: $spacing-200;
+  border-radius: 100vw;
+  border: transparent;
+
+  &:hover {
+    cursor: pointer;
+    opacity: 0.25;
+  }
+}

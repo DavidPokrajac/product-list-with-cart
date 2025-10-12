@@ -25,6 +25,7 @@ export class ProductCart implements OnInit {
     desktop: '',
     mobile: '',
     tablet: '',
+    thumbnail: '',
   };
 
   cartItems: any = signal([]);
@@ -43,6 +44,10 @@ export class ProductCart implements OnInit {
         return items.filter((item: CartModel) => item.name !== this.removedItem());
       });
     });
+
+    this.itemToRemove.removeAllProductsObservable.subscribe(() => {
+      this.cartItems.set([]);
+    });
   }
 
   addToCart(name: string) {
@@ -51,7 +56,12 @@ export class ProductCart implements OnInit {
         return item.name === name;
       })
     ) {
-      this.addToYourCart.addToCart$({ name: this.name, quantity: 1, price: this.price });
+      this.addToYourCart.addToCart$({
+        name: this.name,
+        quantity: 1,
+        price: this.price,
+        thumbnail: this.imgUrl.thumbnail,
+      });
     }
   }
 

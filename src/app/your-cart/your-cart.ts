@@ -3,16 +3,18 @@ import { Component, inject, computed, OnInit, signal } from '@angular/core';
 import { AddToCart } from '../add-to-cart';
 import { RemoveFromCart } from '../remove-from-cart';
 import { CartModel } from '../models/CartModel';
+import { ProductsOrder } from '../products-order/products-order';
 
 @Component({
   selector: 'app-your-cart',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, ProductsOrder],
   templateUrl: './your-cart.html',
   styleUrl: './your-cart.scss',
 })
 export class YourCart implements OnInit {
   cartItem: any = signal([]);
   cartItemToRemove = signal<string | null>(null);
+  isOpen = signal(false);
 
   removeItemFromCart = inject(RemoveFromCart);
   addToCart = inject(AddToCart);
@@ -35,6 +37,10 @@ export class YourCart implements OnInit {
         })
       );
     });
+
+    this.removeItemFromCart.removeAllProductsObservable.subscribe(() => {
+      this.cartItem.set([]);
+    });
   }
 
   removeFromCart(name: string) {
@@ -52,4 +58,12 @@ export class YourCart implements OnInit {
       return (acc += item.price * item.quantity);
     }, 0);
   });
+
+  isOpenModalFn() {
+    this.isOpen.set(true);
+  }
+
+  isOpenModal(status: boolean) {
+    this.isOpen.set(status);
+  }
 }

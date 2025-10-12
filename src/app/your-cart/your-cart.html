@@ -30,5 +30,11 @@
     <img src="assets/images/icon-carbon-neutral.svg" alt="" />This is a
     <strong>carbon-neutral</strong>delivery
   </p>
-  <button class="confirm-order text-medium">Confirm Order</button>}
+  <button class="confirm-order text-medium" (click)="isOpenModalFn()">Confirm Order</button>}
 </div>
+<app-products-order
+  (isOpenModalEvent)="isOpenModal($event)"
+  [isOpen]="isOpen()"
+  [cartItem]="cartItem()"
+  [orderOverallPrice]="orderOverallPrice()"
+></app-products-order>
