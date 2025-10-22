@@ -90,6 +90,16 @@
   border-radius: 100vw;
   border: 2px solid $clr-rose-400;
   background-color: transparent;
+
+  &:hover,
+  &:focus-visible {
+    border-color: $clr-rose-900;
+    cursor: pointer;
+  }
+}
+
+.remove-from-cart-button:hover .remove-from-cart-image {
+  filter: brightness(1%);
 }
 
 .order-total {
@@ -117,11 +127,24 @@
   padding-block: $spacing-200;
   border-radius: 100vw;
   border: transparent;
+  position: relative;
 
   &:hover {
     cursor: pointer;
-    opacity: 0.25;
+
+    &::before {
+      background-color: rgba(0, 0, 0, 0.25);
+      border-radius: 100vw;
+    }
   }
+}
+
+.confirm-order::before {
+  content: 'Confirm Order';
+  position: absolute;
+  inset: 0;
+  color: $clr-white;
+  align-content: center;
 }
 
 .order-overall-price {

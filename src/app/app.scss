@@ -1,6 +1,10 @@
 @use './assets/styles/abstracts/' as *;
 @use './assets/styles/base/' as *;
 
+html {
+  scroll-behavior: smooth;
+}
+
 .main {
   padding: $spacing-300;
   display: grid;
