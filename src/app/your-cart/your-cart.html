@@ -17,7 +17,12 @@
           item.quantity * item.price | currency
         }}</strong>
       </div>
-      <button class="remove-from-cart-button" (click)="removeFromCart(item.name)">
+      <button
+        class="remove-from-cart-button"
+        (click)="removeFromCart(item.name)"
+        (mouseenter)="handleQuantityEnterAnimation($event)"
+        (mouseleave)="handleQuantityLeaveAnimation($event)"
+      >
         <img src="assets/images/icon-remove-item.svg" class="remove-from-cart-image" />
       </button>
     </div>

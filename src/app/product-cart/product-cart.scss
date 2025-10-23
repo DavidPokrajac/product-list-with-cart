@@ -1,8 +1,17 @@
 @use '../assets/styles/abstracts/' as *;
 @use '../assets/styles/base/' as *;
 
+:host {
+  display: contents;
+}
+
+.picture {
+  overflow: hidden;
+}
+
 .recipe-image {
   border-radius: 8px;
+  transition: all 0.25s ease-in-out;
 }
 
 .recipe-category {
@@ -81,4 +90,20 @@
   width: 20px;
   height: 20px;
   border: 2px solid $clr-white;
+
+  &:hover,
+  &:focus-visible {
+    cursor: pointer;
+    background-color: $clr-white;
+  }
+}
+
+.quantity-btn:hover .quantity-btn-image,
+.quantity-btn:focus-visible .quantity-btn-image {
+  filter: brightness(0) saturate(100%) invert(29%) sepia(23%) saturate(4895%) hue-rotate(351deg)
+    brightness(98%) contrast(101%);
+}
+
+picture:not(.highlight) .recipe-image:hover {
+  scale: 1.05;
 }

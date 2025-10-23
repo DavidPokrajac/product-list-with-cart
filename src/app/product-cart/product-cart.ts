@@ -3,8 +3,9 @@ import { Component, inject, Input, OnInit, signal, computed } from '@angular/cor
 import { AddToCart } from '../add-to-cart';
 import { RemoveFromCart } from '../remove-from-cart';
 import { CartModel } from '../models/CartModel';
-import { gsap } from 'gsap/gsap-core';
-gsap.registerPlugin();
+import { gsap, random } from 'gsap/gsap-core';
+import { SplitText } from 'gsap/SplitText';
+gsap.registerPlugin(SplitText);
 @Component({
   selector: 'app-product-cart',
   imports: [NgClass, CurrencyPipe],
@@ -80,22 +81,22 @@ export class ProductCart implements OnInit {
       hi,
       {
         opacity: 0,
-        duration: 0.5,
+        duration: 0.4,
         ease: 'power4.inOut',
       },
-      '-=0.65'
+      '-=0.55'
     );
     timeline.to(hi, {
       opacity: 0,
       x: 125,
       duration: 0.25,
-      ease: 'elastic.inOut(1, 0.35)',
+      ease: 'elastic.inOut(1, 0.75)',
     });
     timeline.to(hi, {
       opacity: 1,
       x: 0,
-      duration: 0.35,
-      ease: 'elatic.inOut(1, 0.25)',
+      duration: 0.5,
+      ease: 'elastic.inOut(1, 0.75)',
     });
     setTimeout(() => {
       this.cartItems.update((items: any) => {
@@ -169,13 +170,14 @@ export class ProductCart implements OnInit {
   }
 
   handleEnterAnimation(event: Event) {
-    const hi = (event.target as HTMLElement).querySelector('.add-to-cart-icon');
-    gsap.to(hi, {
+    const hi = (event.target as HTMLElement)?.querySelector('.add-to-cart-icon');
+    let tle = gsap.timeline();
+    tle.to(hi, {
       scale: 1.2,
       duration: 0.75,
       ease: 'power2.inOut',
     });
-    gsap
+    tle
       .to(hi, {
         rotate: '-30deg',
         duration: 0.2,
@@ -184,10 +186,31 @@ export class ProductCart implements OnInit {
         yoyo: true,
       })
       .play();
+    let split = SplitText.create(event.target as HTMLElement, { type: 'chars,words,lines' });
+    tle.to(
+      split.chars,
+      {
+        duration: 0.5,
+        y: 'random(-5, 10)',
+        ease: 'power2.inOut',
+        stagger: 0.1,
+      },
+      '<-0.75'
+    );
+    tle.to(
+      split.chars,
+      {
+        duration: 0.5,
+        y: 0,
+        ease: 'power2.inOut',
+        stagger: 0.1,
+      },
+      '-=1.1'
+    );
   }
 
   handleLeaveAnimation(event: Event) {
-    const hi = (event.target as HTMLElement).querySelector('.add-to-cart-icon');
+    const hi = (event.target as HTMLElement)?.querySelector('.add-to-cart-icon');
     gsap
       .to(hi, {
         scale: '1',
@@ -195,6 +218,26 @@ export class ProductCart implements OnInit {
         ease: 'power2.inOut',
       })
       .play();
+  }
+
+  handleQuantityEnterAnimation(event: Event) {
+    const hi = (event.target as HTMLElement)?.closest('.quantity-btn');
+    gsap.to(hi, {
+      rotate: '360deg',
+      scale: 1.1,
+      duration: 0.25,
+      ease: 'power2.inOut',
+    });
+  }
+
+  handleQuantityLeaveAnimation(event: Event) {
+    const hi = (event.target as HTMLElement)?.closest('.quantity-btn');
+    gsap.to(hi, {
+      rotate: '-360deg',
+      scale: 1,
+      duration: 0.25,
+      ease: 'power2.inOut',
+    });
   }
 
   itemQuantity = computed(() => {

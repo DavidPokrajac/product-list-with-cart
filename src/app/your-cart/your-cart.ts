@@ -4,6 +4,7 @@ import { AddToCart } from '../add-to-cart';
 import { RemoveFromCart } from '../remove-from-cart';
 import { CartModel } from '../models/CartModel';
 import { ProductsOrder } from '../products-order/products-order';
+import gsap from 'gsap';
 
 @Component({
   selector: 'app-your-cart',
@@ -65,5 +66,25 @@ export class YourCart implements OnInit {
 
   isOpenModal(status: boolean) {
     this.isOpen.set(status);
+  }
+
+  handleQuantityEnterAnimation(event: Event) {
+    const hi = (event.target as HTMLElement)?.closest('.remove-from-cart-button');
+    gsap.to(hi, {
+      rotate: '360deg',
+      scale: 1.1,
+      duration: 0.25,
+      ease: 'power2.inOut',
+    });
+  }
+
+  handleQuantityLeaveAnimation(event: Event) {
+    const hi = (event.target as HTMLElement)?.closest('.remove-from-cart-button');
+    gsap.to(hi, {
+      rotate: '-360deg',
+      scale: 1,
+      duration: 0.25,
+      ease: 'power2.inOut',
+    });
   }
 }
