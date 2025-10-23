@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Data } from '../data';
 import { ProductCart } from '../product-cart/product-cart';
 import { gsap } from 'gsap';
@@ -9,7 +9,7 @@ import { gsap } from 'gsap';
   templateUrl: './product-cart-list.html',
   styleUrl: './product-cart-list.scss',
 })
-export class ProductCartList implements OnInit, AfterViewInit {
+export class ProductCartList implements OnInit {
   recipes: any[] = [];
 
   constructor(private dataService: Data) {}
@@ -19,9 +19,7 @@ export class ProductCartList implements OnInit, AfterViewInit {
       next: (data) => (this.recipes = data),
       error: (error) => console.error(error),
     });
-  }
 
-  ngAfterViewInit(): void {
     gsap.from('.recipes-list li', {
       duration: 0.75,
       y: 50,
