@@ -4,16 +4,13 @@ import {
   inject,
   computed,
   OnInit,
-  OnChanges,
   signal,
   ElementRef,
   ViewChild,
-  AfterViewChecked,
   QueryList,
   ViewChildren,
   AfterViewInit,
-  viewChildren,
-  AfterContentInit,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { AddToCart } from '../add-to-cart';
 import { RemoveFromCart } from '../remove-from-cart';
@@ -22,6 +19,7 @@ import { ProductsOrder } from '../products-order/products-order';
 import gsap from 'gsap';
 gsap.registerPlugin();
 @Component({
+  changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-your-cart',
   imports: [CurrencyPipe, ProductsOrder],
   templateUrl: './your-cart.html',
@@ -47,6 +45,11 @@ export class YourCart implements OnInit, AfterViewInit {
           if (items.find((item: any) => item.name === name$.name)) {
             return [...this.cartItem()];
           }
+          gsap.to('cart-item-length', {
+            rotation: 45,
+            duration: 0.5,
+            transformOrigin: 'top center',
+          });
           return [...this.cartItem(), name$];
         });
       }, 750);
@@ -57,6 +60,7 @@ export class YourCart implements OnInit, AfterViewInit {
         repeat: 3,
         delay: 1.5,
       });
+
       gsap.to('.order-item-quantity', {
         scale: '2',
         duration: 0.5,

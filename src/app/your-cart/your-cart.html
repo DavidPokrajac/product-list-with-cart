@@ -1,7 +1,5 @@
 <div #cartWrapper class="cart-wrapper">
-  <h2 class="cart-title text-large">
-    Your Cart <span class="cart-item-length">({{ cartItem().length }})</span>
-  </h2>
+  <h2 class="cart-title text-large">Your Cart ({{ cartItem().length }})</h2>
   @if(cartItem().length === 0) {
   <img src="assets/images/illustration-empty-cart.svg" class="empty-cart-img" />
   <p class="cart-info text-short-semibold">Your added items will appear here</p>
