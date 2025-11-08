@@ -1,0 +1,227 @@
+html {
+  box-sizing: border-box;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  min-block-size: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+img,
+picture {
+  max-inline-size: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  padding: 0;
+}
+
+button img {
+  margin: 0 auto;
+}
+
+@font-face {
+  font-family: "Red Hat Regular";
+  src: url("../../fonts/static/RedHatText-Regular.ttf") format(truetype);
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Red Hat Semibold";
+  src: url("../../fonts/static/RedHatText-SemiBold.ttf") format(truetype);
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Red Hat Bold";
+  src: url("../../fonts/static/RedHatText-Bold.ttf") format(truetype);
+  font-weight: normal;
+  font-style: normal;
+}
+.text-extra-large {
+  font-size: 40px;
+  line-height: 1.2;
+  font-weight: 900;
+}
+
+.text-large {
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 900;
+}
+
+.text-medium {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.text-short-regular {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.text-short-semibold {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.order-dialog-wrapper:has(.order-dialog[open]) {
+  position: fixed;
+  inset: 0 0 0 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  min-height: 100vh;
+  height: 100%;
+}
+
+.order-dialog {
+  border: none;
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline: 0;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 12px;
+  padding: 40px 24px 24px;
+}
+@media (width >= 600px) {
+  .order-dialog {
+    padding: 40px;
+    inset: 50% 50%;
+    translate: -50% -50%;
+  }
+}
+
+.icon-confirmed {
+  margin-block-end: 24px;
+}
+
+.order-dialog-title {
+  color: rgb(38, 15, 8);
+  font-family: "Red Hat Bold";
+  margin-block-end: 8px;
+}
+
+.order-dialog-info {
+  color: rgb(135, 99, 90);
+  margin-block-end: 32px;
+}
+
+.order-items-wrapper {
+  background-color: rgb(252, 248, 246);
+  border-radius: 8px;
+  padding: 24px;
+  margin-block-end: 32px;
+}
+
+.order-items-wrapper > .order-item:not(:first-child) {
+  margin-block-start: 16px;
+}
+
+.order-items-wrapper > .order-item:not(:last-child) {
+  margin-block-end: 16px;
+}
+
+.order-item:last-of-type + hr {
+  display: none;
+}
+
+.horizontal-divider {
+  color: rgb(245, 238, 236);
+}
+.horizontal-divider:last-of-type {
+  margin-block: 24px;
+}
+
+.order-item {
+  display: flex;
+  -moz-column-gap: 16px;
+       column-gap: 16px;
+  align-items: center;
+}
+
+.item-thumbnail {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+}
+
+.order-item-name {
+  font-weight: 600;
+  margin-block-end: 8px;
+  color: rgb(38, 15, 8);
+}
+
+.order-item-quantity {
+  font-weight: 600;
+  color: rgb(199, 59, 15);
+  margin-inline-end: 8px;
+}
+
+.order-item-price {
+  color: rgb(135, 99, 90);
+}
+
+.order-item-price {
+  margin-inline-end: 8px;
+}
+
+.order-item-overall-price {
+  font-family: "Red Hat Semibold";
+  margin-left: auto;
+  color: rgb(38, 15, 8);
+}
+
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(38, 15, 8);
+}
+
+.order-overall-price {
+  font-family: "Red Hat Bold";
+}
+
+.start-new-order-btn {
+  display: block;
+  width: 100%;
+  background-color: rgb(199, 59, 15);
+  color: rgb(255, 255, 255);
+  padding-block: 16px;
+  border-radius: 100vw;
+  border: transparent;
+}
+.start-new-order-btn:hover {
+  cursor: pointer;
+  opacity: 0.25;
+}

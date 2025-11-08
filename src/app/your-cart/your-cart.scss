@@ -90,6 +90,8 @@
   border-radius: 100vw;
   border: 2px solid $clr-rose-400;
   background-color: transparent;
+  padding: 0;
+  text-align: center;
 
   &:hover,
   &:focus-visible {
@@ -150,4 +152,10 @@
 .order-overall-price {
   font-family: 'Red Hat Bold';
   color: $clr-rose-900;
+}
+
+.cart-item-length {
+  width: fit-content;
+  position: absolute;
+  margin-inline-start: 8px;
 }

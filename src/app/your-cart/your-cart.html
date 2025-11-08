@@ -1,9 +1,13 @@
 <div #cartWrapper class="cart-wrapper">
-  <h2 class="cart-title text-large">Your Cart ({{ cartItem().length }})</h2>
   @if(cartItem().length === 0) {
+  <h2 class="cart-title text-large">Your Cart (0)</h2>
   <img src="assets/images/illustration-empty-cart.svg" class="empty-cart-img" />
   <p class="cart-info text-short-semibold">Your added items will appear here</p>
   } @else {
+  <h2 class="cart-title text-large">
+    Your Cart
+    <span class="cart-title text-large cart-item-length">{{ '  ' }}({{ cartItem().length }})</span>
+  </h2>
   <div class="order-items">
     @for(item of cartItem(); track item.name) {
     <div #orderItem class="order-item">

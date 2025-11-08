@@ -1,0 +1,28 @@
+:host {
+  display: contents;
+}
+
+.recipes-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 24px;
+}
+@media (width >= 600px) {
+  .recipes-list {
+    grid-template-columns: subgrid;
+    grid-column: 1/4;
+    grid-row: 2/3;
+    -moz-column-gap: 24px;
+         column-gap: 24px;
+    row-gap: 32px;
+  }
+}
+@media (width >= 1024px) {
+  .recipes-list {
+    grid-column: 1/2;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

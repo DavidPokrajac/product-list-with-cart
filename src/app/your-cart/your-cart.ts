@@ -45,11 +45,6 @@ export class YourCart implements OnInit, AfterViewInit {
           if (items.find((item: any) => item.name === name$.name)) {
             return [...this.cartItem()];
           }
-          gsap.to('cart-item-length', {
-            rotation: 45,
-            duration: 0.5,
-            transformOrigin: 'top center',
-          });
           return [...this.cartItem(), name$];
         });
       }, 750);
@@ -60,7 +55,13 @@ export class YourCart implements OnInit, AfterViewInit {
         repeat: 3,
         delay: 1.5,
       });
-
+      gsap.to('.cart-item-length', {
+        scale: 1.25,
+        duration: 0.35,
+        yoyo: true,
+        repeat: 1,
+        delay: 0.5,
+      });
       gsap.to('.order-item-quantity', {
         scale: '2',
         duration: 0.5,
@@ -84,6 +85,13 @@ export class YourCart implements OnInit, AfterViewInit {
         yoyo: true,
         repeat: 3,
         delay: 0.2,
+      });
+      gsap.to('.cart-item-length', {
+        scale: 1.25,
+        duration: 0.35,
+        yoyo: true,
+        repeat: 1,
+        delay: 3,
       });
       this.isDeleteBtnClicked.set({ isClicked: true, buttonClicked: 'minus' });
       const yeahyeahyeahs = this.cartItem().findIndex((item: any) => item.name === name$);
@@ -169,6 +177,13 @@ export class YourCart implements OnInit, AfterViewInit {
     this.isDeleteBtnClicked.set({ isClicked: true, buttonClicked: 'cross' });
     this.cartItemToRemove.set({ name: name, index: index.toString() });
     const tl = gsap.timeline();
+    gsap.to('.cart-item-length', {
+      scale: 1.25,
+      duration: 0.35,
+      yoyo: true,
+      repeat: 1,
+      delay: 2,
+    });
     setTimeout(() => {
       this.cartItem.update((items: CartModel[]) =>
         items.filter((item: CartModel) => {

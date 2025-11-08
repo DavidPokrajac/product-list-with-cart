@@ -1,0 +1,131 @@
+html {
+  box-sizing: border-box;
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  min-block-size: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  text-wrap: balance;
+}
+
+img,
+picture {
+  max-inline-size: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  padding: 0;
+}
+
+button img {
+  margin: 0 auto;
+}
+
+@font-face {
+  font-family: "Red Hat Regular";
+  src: url("../../fonts/static/RedHatText-Regular.ttf") format(truetype);
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Red Hat Semibold";
+  src: url("../../fonts/static/RedHatText-SemiBold.ttf") format(truetype);
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Red Hat Bold";
+  src: url("../../fonts/static/RedHatText-Bold.ttf") format(truetype);
+  font-weight: normal;
+  font-style: normal;
+}
+.text-extra-large {
+  font-size: 40px;
+  line-height: 1.2;
+  font-weight: 900;
+}
+
+.text-large {
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 900;
+}
+
+.text-medium {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.text-short-regular {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.text-short-semibold {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.main {
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1fr;
+  min-block-size: 100vh;
+  row-gap: 32px;
+  margin: 0 auto;
+}
+@media (width >= 600px) {
+  .main {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: min-content 1fr;
+    padding: 40px;
+  }
+}
+@media (width >= 1024px) {
+  .main {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 48px 1fr;
+    -moz-column-gap: 32px;
+         column-gap: 32px;
+    max-inline-size: 1216px;
+  }
+}
+
+.main-title {
+  font-family: "Red Hat Bold";
+  margin-block: 0;
+  grid-row: 1/2;
+}
