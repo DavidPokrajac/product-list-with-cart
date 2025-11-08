@@ -105,22 +105,22 @@ export class ProductsOrder implements AfterViewChecked {
         let tl = gsap.timeline();
         tl.set('.prize', {
           position: 'absolute',
-          left: 'random(0, 1400)',
+          left: 'random(0, 1500)',
           top: 'random(0, 1000)',
         });
         tl.from('.prize', {
           opacity: 0,
-          duration: 0.15,
+          duration: 0.25,
         });
         tl.to(
           '.prize',
           {
             top: 'random(-50, -200)',
             opacity: 0.25,
-            duration: 5,
+            duration: 4,
             ease: 'power4.inOut',
           },
-          '<0.2'
+          '>0.01'
         );
         tl.to(
           '.prize',
