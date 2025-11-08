@@ -1,4 +1,4 @@
-<div class="cart-wrapper">
+<div #cartWrapper class="cart-wrapper">
   <h2 class="cart-title text-large">
     Your Cart <span class="cart-item-length">({{ cartItem().length }})</span>
   </h2>
@@ -6,9 +6,9 @@
   <img src="assets/images/illustration-empty-cart.svg" class="empty-cart-img" />
   <p class="cart-info text-short-semibold">Your added items will appear here</p>
   } @else {
-  <div>
+  <div class="order-items">
     @for(item of cartItem(); track item.name) {
-    <div class="order-item">
+    <div #orderItem class="order-item">
       <div>
         <h3 class="order-item-name text-short-semibold">{{ item.name }}</h3>
         <span class="order-item-quantity text-short-semibold">{{ item.quantity }}x</span>
@@ -19,7 +19,7 @@
       </div>
       <button
         class="remove-from-cart-button"
-        (click)="removeFromCart(item.name)"
+        (click)="removeFromCart(item.name, $index)"
         (mouseenter)="handleQuantityEnterAnimation($event)"
         (mouseleave)="handleQuantityLeaveAnimation($event)"
       >
